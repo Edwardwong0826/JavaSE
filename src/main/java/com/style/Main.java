@@ -80,6 +80,7 @@ public class Main {
             System.out.println(e);
         }
 
+
         // this will hit java.lang.ArithmeticException: / by zero runtime execption
         // double result1 = divide(15, 0);
         try {
@@ -89,7 +90,6 @@ public class Main {
             System.out.println(e.getMessage());
             System.out.println("Cannot divide by zero");
         }
-
 
         // System.out.println(countQuantity2(shirts));
 

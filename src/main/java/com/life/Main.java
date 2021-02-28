@@ -42,17 +42,11 @@ public class Main {
 
 
         System.out.println("\n");
-        tryCatch();
-        switchCase();
-        lambdaWithPredicate();
         sublist();
-        lambdaForOther();
 
         // is ok to call the function without parameter, because it were declared to take variable number of arguments,
         someMethod();
         arrays();
-        labelledBreakLoop();
-        forLoop();
 
         //Overloading Widening
         byte test = 0;
@@ -71,203 +65,10 @@ public class Main {
     }
 
 
-    public static void forLoop() {
-        // is ok to leave 1 and 2 expression to empty, which will be loop forever
-        // Second expression must return boolean value
-        // Third expression only allow i++, i--, ++i, --i, =, method Call () and ClassInstanceCreationExpression new (...), and variable assignment
-        int count = 0;
-        System.out.println();
-
-        OUTER_LOOP: for (; Math.random() < 10; ) {
-
-            System.out.println("Outer Loop Now: " + count++);
-            // for(int i=0, k=0; xxx;xxx) only correct , multiple variable type declaration only one type
-            INNER_LOOP: for(int i=0; i < 5; i ++) // i++ and ++ i no difference , will increment after body execution
-            {
-                if(i == 3)
-                    break OUTER_LOOP; // with optional label, we can break the loop where this label place at, it can break most outer loop
-                                     // without this, will only break the inner loop only
-                System.out.println("Inner loop: " + i);
-            }
-            // if we put some unreachable code, and intends to use the variable inside in, the compiler will not compile
-            // return and break is the same, continue skip the current iteration
-        }
-
-        System.out.println();
-
-    }
-
-    public static void labelledBreakLoop(){
-
-        // use labelled break will breaks the loop even it is the outer most loop,
-        // without labelled break will only breaks out the current loop example in nested loop
-        int c = 0;
-        JACK: while (c < 8){
-            JILL: System.out.println("c = "+c);
-            for(int k = 0; k<c; k++){
-                System.out.println(" k = "+k+" c = "+c);
-                if (c > 3) break JACK;
-            }
-            c++;
-        }
-    }
-
     enum Flavors{
 
         FRUIT, BERRIES{public boolean isHealthy(){return true;}};
 
-    }
-
-    public static void switchCase(int... inInt) {
-
-        short shr = 100;
-        int iNt = 10;
-        shr = (short) iNt;
-        // primitive byte,short,char,int enum and String can be used, wrapper class Character,Byte,Short,Integer
-        // switch case will executed the statement that matches the condition, if that statement without break, it will fall
-        // through and executed until reaches the break
-        switch (iNt) { //switch statement will apply numeric promotion as well
-
-            // The default will be executed if the condition doesn't match with any case
-            // but is optional, the switch case can without the default and will not print anything as well
-
-            // default : xxxxxx , if default is at above, and switch statement is 20 , it will not print the default 
-            case 10:
-                System.out.println("Switch Case: " + 10);
-            // case 3 : 4, is not allowed, but this default : case 3 is allowed
-            default :  case 3: System.out.print("Switch case default and: " + 5 + " ");
-            case 100: // we only can use literal values, local final variable and enum in case expression only, not local variable
-                      // and cannot use final method parameter
-                break;
-
-            //case 101: 102: This is not valid, will not compile, case expression cannot have multiple value without case
-
-
-        }
-    }
-
-    public static void tryCatch() {
-
-        // Try must come with catch to caught the exception, the finally is optional, but once added,
-        // it will executed no matter there is an exception caught,
-        // unless in Try or Catch block the System.exit method is called, then finally will not be executed
-        // it can be compiled the try without the catch block, just that the exception without caught will be thrown,
-        try {
-
-            m1();
-            // After m1() throws the Exception, the remaining codes int try will skip and go to that exception catch block
-            throw new NullPointerException();
-
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("1");
-
-            // only the exception in try could be catch, those in catch block will not be handle
-            // after executed finally block will throw the error
-
-            // throw new NullPointerException();
-        } catch (NullPointerException e) {
-            System.out.println("2");
-
-        // we can't put the relationship exception in the same catch block
-        // catch(NullPointerException|RuntimeException)
-        } catch (Exception e) {
-            System.out.println("3");
-        } finally {
-            System.out.println("4");
-
-            // If try catch thrown the exception, eventually the control will come to the finally block,
-            // if here is thrown any exception, the method will throws the finally thrown exception,
-            // Other exceptions thrown by the code prior to this point are lost.
-            //throw new CloneNotSupportedException();
-        }
-        System.out.println("END");
-
-    }
-
-    public static void lambdaWithPredicate() {
-        int[] names = {0, 2, 4, 6, 8, 10};
-
-        Brand[] brands = new Brand[]{new Brand("Omega"), new Brand("Rolex")};
-        List<Brand> brandList = new ArrayList<>(Arrays.asList(brands));
-        List<Brand> brandList1 = Arrays.asList(brands);
-        List<Integer> mylist1 = new ArrayList(Arrays.asList(names));
-        ArrayList<Integer> mylist2 = new ArrayList<>();
-
-        mylist2.add(0);
-        mylist2.add(2);
-        mylist2.add(4);
-        mylist2.add(6);
-        mylist2.add(8);
-        mylist2.add(10);
-
-        // The predicate can either declared explicitly  or directly in method that requires predicate parameter use lambda
-        // And return boolean as a result
-        Predicate<Integer> pred = p -> p.intValue() == 0;
-
-        mylist2.removeIf(pred);
-
-        // Return keyword will required the method body, multiply line will need to use return keyword
-        brandList.removeIf((Brand b) -> {
-            return b.getName().equalsIgnoreCase("Rolex");
-        });
-
-        // If try to remove the list that is back by array will cause error, but may changed the elements using list.set
-        brandList1.removeIf(b -> b.getName().equalsIgnoreCase("LV"));
-
-        System.out.println("\n");
-        for (int i : names) {
-            mylist1.add(i);
-        }
-
-        for (Integer i : mylist2) {
-            System.out.println(i);
-
-        }
-
-        System.out.println(brandList.get(0).toString());
-
-    }
-
-    public static void lambdaForOther() {
-
-        List<String> strArrList = new ArrayList<>(Arrays.asList("Java", "C++", "React"));
-        List<Integer> intArrList = new ArrayList<>(Arrays.asList(80, 90, 56, 65, 150));
-
-        final String exp= "!!";
-        String space = " ";
-
-        //Rules of lambda parameter parentheses and braces
-        // 1. Can omit () if only one parameter and type is not stated
-        // 2. More than one parameter should have ()
-        // 3. if one parameter and stated type should have ()
-        // 4. Can omit {} when only a single statement
-        // 5. when have braces should contain the return and semicolon, { return xxx ;}
-
-        // Function interface accept one argument and return results, <Integer, String> Where first is argument, and second is
-        // return type
-        Function<Integer, String> f = s -> "hello" + s;
-        Function<Integer, Integer> f2 = s -> s + s;
-
-        // Consumer takes something and does something
-        Consumer<String> printConsumer = s -> System.out.println(s + " Programming" + space  + "language!" + exp);
-
-        // Supplier takes nothing and return something
-        Supplier<List<Brand>> listSupplier = ArrayList::new;
-
-        //Predicate take argument and return boolean value
-        Predicate<Integer> pred = (Integer p) -> p > 100;
-
-
-        // lambda can access an instance methods, method parameter or local variable if they not set after initialized,
-        // need to be effectively final. But if really want lambda to access, better add the final to the variable
-        Predicate<Integer> predic = p -> space.length() == p;
-
-
-        System.out.println(strArrList.toString() + "\n");
-        strArrList.stream().forEach(printConsumer);
-        intArrList.stream().filter(pred);
-        System.out.println(intArrList);
-        System.out.println();
     }
 
     public static void sublist() {

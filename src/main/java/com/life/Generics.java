@@ -6,6 +6,8 @@ import com.style.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.function.BiFunction;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
@@ -141,7 +143,7 @@ public class Generics<T, U>{
         // A map cannot contain duplicate keys, it can get the value by giving the keys or also called key pairs, and is un-order
         // TreeMap is sorts the key, the values not sorted
 
-        Map<String, String> map = new TreeMap<>();
+        ConcurrentMap<String, String> map = new ConcurrentSkipListMap<>();
         map.put("first", "first pair value");
         map.put("third", "third pair value");
         map.put("second", "second pair value");
@@ -224,6 +226,26 @@ public class Generics<T, U>{
         System.out.println(queue.peek()); // peek() return next element or return null if empty
 
 
+    }
+
+    public static void collectionIterator(){
+        ArrayList<Integer> arrayList = new ArrayList<Integer>();
+        for(int i=0; i<10; i++)
+        {
+            arrayList.add(i);
+        }
+
+        System.out.println(arrayList);
+        // when using iterator .next() it must be call iterator .hasNext() after, else will throw exception
+        Iterator itr = arrayList.iterator();
+        while(itr.hasNext()){
+            int j = (Integer)itr.next();
+            System.out.println(j);
+            if(j % 2 != 0)
+                itr.remove();
+        }
+        System.out.println();
+        System.out.println(arrayList);
     }
 
 
@@ -341,6 +363,8 @@ public class Generics<T, U>{
 
         List<?> q = List.of("mouse","parrot"); // this ? treats as object list, so method not object can not use
         var greetings = new LinkedList<String>();
+
+        collectionIterator();
 
     }
 

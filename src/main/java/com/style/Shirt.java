@@ -46,4 +46,28 @@ public class Shirt extends Clothing {
     public void doReturn() {
         System.out.println("Returning the Shirt to shop...");
     }
+
+    // the default hashCode from Object class will generate unique hashcode even if two object is equals() or override equals already
+    // we need to either override two hashCode() and equals() or don't override two at all
+    @Override
+    public int hashCode() {
+        int result=17;
+        result=31*result+age;
+        result=31*result+(pattern!=null ? pattern.hashCode():0);
+        return result;
+    }
+
+    // if we override the equals we also need to override the hashcode as well, this is to ensure in the hash-based collection like
+    // HashMap, HashTable, HashSet those can function properly
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+        if (!(obj instanceof Shirt))
+            return false;
+        Shirt shirt = (Shirt) obj;
+        return shirt.getSize() == this.getSize()
+                && shirt.getPrice() == this.getPrice()
+                && shirt.getName().equals(this.getName()) && shirt.getPattern().equals(this.getPattern()) && shirt.getType().equals(this.getType());
+    }
 }

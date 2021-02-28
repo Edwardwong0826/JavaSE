@@ -2,6 +2,7 @@ package com.life;
 
 import com.style.Brand;
 import com.style.Clothing;
+import com.style.Shirt;
 import org.w3c.dom.ls.LSOutput;
 
 import java.util.*;
@@ -197,11 +198,21 @@ public class BuiltInFunctional {
         System.out.println(optDouble.orElseThrow(RuntimeException::new));
 
 
-        Optional<Integer> optionalInteger = Optional.ofNullable(null);
-        System.out.println(optionalInteger.orElseThrow());
+//        Optional<Integer> optionalInteger = Optional.ofNullable(null);
+//        System.out.println(optionalInteger.orElseThrow());
 
 
 
+    }
+
+    public static void overrideEqualAndHashCodes()
+    {
+        Shirt s1 = new Shirt(10,50, "T-shirt");
+        Shirt s2 = new Shirt(10,50, "T-shirt");
+        HashSet<Shirt> shirts = new HashSet<>();
+        shirts.add(s1);
+        System.out.println(shirts.contains(s2));
+        System.out.println("shirt1 hashcode: " + s1.hashCode() + " ------ shirt2 hashcode: " +s2.hashCode());
     }
 
 
@@ -225,6 +236,7 @@ public class BuiltInFunctional {
         lambdasExpression(pred,ints1);
         binaryTypes();
         optionalType();
+        overrideEqualAndHashCodes();
 
         // 1.D 2.F 3.E 4.AB 5.AC 6.B 7.F 8.DE 9.BD 10.FG 11.BD 12.FDH 13.G 14.BD 15.B 16.C 17.E 18.AD 19.A
         // 20.ACE 21.DE 22.CE

@@ -86,4 +86,9 @@ public class Superclass {
 
     }
 
+    public static void main(String[] args) throws IOException {
+        Superclass s = new Superclass();
+        s.printInfo();
+    }
+
 }

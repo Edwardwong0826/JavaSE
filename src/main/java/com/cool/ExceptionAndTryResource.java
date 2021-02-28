@@ -44,7 +44,7 @@ public class ExceptionAndTryResource extends Throwable {
 
             // we can't put the relationship exception in the same catch block
             // catch(NullPointerException|RuntimeException)
-            // catch(IndexOutOfBoundsException e |RuntimeException e1) not valid, two variable exist
+            // catch(IndexOutOfBoundsException e |RuntimeException e1) not valid, two variable exist, only ibe variable allow
             // catch(IndexOutOfBoundsException e |RuntimeException e) not valid, two same variable exist
         } catch (RuntimeException e) {
             System.out.println("3");

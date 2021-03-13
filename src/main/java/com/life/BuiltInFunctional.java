@@ -61,7 +61,7 @@ public class BuiltInFunctional {
         // lambda can access an instance methods, method parameter or local variable if they not set after initialized,
         // need to be effectively final. But if really want lambda to access, better add the final to the variable
         // instance or static or lambda variable are always allowed
-        Predicate<Integer> predic = p -> space.length() == p;
+        Predicate<Integer> predic = p -> strArrList.size() == p;
 
         // if want to use var, must be in () and all formal parameters be var as well,
         // cannot mix with omit parameter or other type

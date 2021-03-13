@@ -57,7 +57,7 @@ public class Operator {
     }
 
     public static void operator(){
-
+        double test = 0.0;
         long goat = 10;
         short sheep = 5;
         sheep *= goat; // compound operator will cast sheep to larger type, and do multiplication, cast the result to the based on the left type
@@ -77,6 +77,7 @@ public class Operator {
         // this will print 129 instead of -128, because the () casting is higher order then +,
         // so it will automatically promotes both to int instead of cast the results to byte
         start = (byte)Byte.MAX_VALUE + 2;
+        System.out.println(start);
 
     }
 

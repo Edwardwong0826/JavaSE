@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 // interface can extends more than one interface because there is no implementation
- public interface Returnable extends Cleanable{
+ public interface Returnable extends Cleanable, CleanableTwo{
 
     // A interface is a contract and way of defining shared behaviour, it a way of abstracting out the shared capability
     // across multiple different class that does not have common super class but common method

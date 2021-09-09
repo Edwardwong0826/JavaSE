@@ -3,7 +3,7 @@ package com.life;
 @java.lang.FunctionalInterface
 public interface FunctionalInterface {
     // functional interface require the class only have one single abstract method, prior to java 11,
-    // we can put the default and private method at interface and still consider functional inetrface
+    // we can put the default and private method at interface and still consider functional interface
 
     public abstract void doIt(int inInt);
 

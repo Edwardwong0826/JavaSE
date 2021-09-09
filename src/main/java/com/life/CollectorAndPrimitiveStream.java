@@ -13,7 +13,6 @@ public class CollectorAndPrimitiveStream {
 
     public static void primitiveStream(){
 
-
         // XXXStream average() return optionalDouble
         // findAny() return optional<T>
         // sum() return primitive <T>
@@ -126,8 +125,8 @@ public class CollectorAndPrimitiveStream {
         // Collecting to map
         Stream<String> animals1 = Stream.of("lions", "tigers", "bears");
         //Map<String, Integer> map = animals1.collect(Collectors.toMap(s -> s, s-> s.length())); // lambdas version
-        Map<String, Integer> map = animals1.collect(Collectors.toMap(s -> s, String::length)); // method reference version
-        //Map<Integer, String> map = animals1.collect(Collectors.toMap(String::length, k -> k, (s1, s2) -> s1 + "," + s2));
+        //Map<String, Integer> map = animals1.collect(Collectors.toMap(s -> s, String::length)); // method reference version
+        Map<Integer, String> map = animals1.collect(Collectors.toMap(String::length, k -> k, (s1, s2) -> s1 + "," + s2));
         //TreeMap<Integer, String> map = animals1.collect(Collectors.toMap(String::length, k -> k, (s1, s2) -> s1 + "," + s2, TreeMap::new));
         System.out.println(map); // map.get("Lions")
 
@@ -137,7 +136,7 @@ public class CollectorAndPrimitiveStream {
 
     public static void collectsByGroupPartitionMap() {
 
-        // Both grouping by and partitioning by can standalone or use use an downstream collector
+        // Both grouping by and partitioning by can stand alone or use a downstream collector
         // standalone collector collects each group of values into a list
 
         System.out.println("collectsByGroupPartitionMap-----------------------");
@@ -170,9 +169,9 @@ public class CollectorAndPrimitiveStream {
         System.out.println(mapTeam6.getClass()); // {4={4=[beta]},5{5=[Alpha,Hotel] }} HashMap value Map value of TreeSet
 
 
-        // partitioning  split a list into two parts based on the true and false group
+        // partitioning split a list into two parts based on the true and false group
         // normally false group will be first and true group will be second
-        // no guarantees on type, mutability,serializability or thread safe of map return
+        // no guarantees on type, mutability,serializable or thread safe of map return
         Stream<String> partition1 = Stream.of("Alpha", "Beta", "Hotel");
         Map<Boolean, List<String>> mapPartition1 = partition1.collect(Collectors.partitioningBy(s -> s.length() <= 4));
         System.out.println(mapPartition1);  // {false=[tigers], true=[lions, bears]}
@@ -194,13 +193,11 @@ public class CollectorAndPrimitiveStream {
     
     public static void main(String[] args){
 
-
-
-        primitiveStream();
+        //primitiveStream();
         streamCollector();
-        StreamSummaryStatistics();
+        //StreamSummaryStatistics();
         collectsByGroupPartitionMap();
-        primitiveFunctionalInterface();
+        //primitiveFunctionalInterface();
         System.out.println();
         System.out.println(Stream.iterate(1, x -> ++x).limit(5).map(x -> "" + x).collect(Collectors. joining()));
 

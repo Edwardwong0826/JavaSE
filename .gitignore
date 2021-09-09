@@ -2,3 +2,7 @@
 *.class
 *.class
 *.class
+.idea/sonarlint/issuestore/c/8/c83d8ca788c3dbd39175158f54fba586f6d32b26
+*.class
+*.class
+target/classes/com/style/Main.class

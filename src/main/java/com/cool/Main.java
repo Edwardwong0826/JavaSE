@@ -101,8 +101,8 @@ public class Main {
         sb.append(str);
         // set this StringBuilder to null does not affected to the original StringBuilder object, but it can update the original object
         // set to null only means pointer points to null only
-        //sb = null;
-        //str = null;
+        sb = null;
+        str = null;
 
     }
 

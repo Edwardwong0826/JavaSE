@@ -4,10 +4,10 @@ package com.style;
 import java.util.Collection;
 import java.util.List;
 
-// interface can extends more than one interface because there is no implementation
+// interface can extend more than one interface because there is no implementation
  public interface Returnable extends Cleanable, CleanableTwo{
 
-    // A interface is a contract and way of defining shared behaviour, it a way of abstracting out the shared capability
+    // A interface is a contract and way of defining shared behaviour, it is a way of abstracting out the shared capability
     // across multiple different class that does not have common super class but common method
 
     // the variable will be implicitly to be public static final only, not allowed to be private and protected
@@ -24,11 +24,11 @@ import java.util.List;
     // but not protected or protected static methods
 
 
-    // private method must marked with private and have method body, can only being called in
+    // private method must mark with private and have method body, can only being called in
     // default and private(non-method) methods within interface definition
     private void count1()
     {
-        // can be use to reduce duplication code when have many default method doing same logic
+        // can be used to reduce duplication code when have many default method doing same logic
     };
 
     // static method need to have method body, can with or without ; at the end of { }
@@ -50,7 +50,7 @@ import java.util.List;
     // default methods must have a body, purpose is to add new method to interface without needs the class
     // to implements and break other class, noted default method is a instance method
     // rules of default method
-    // 1. only interface allow to add default keyword as default method
+    // 1. only interface allow adding default keyword as default method
     // 2. if class inherits two or more default method with same method signature, the class must override it
     // 3. default method cannot be marked abstract and final
     // 4. default method must have body
@@ -77,21 +77,22 @@ import java.util.List;
     // interface method implicit to public abstract, cannot be other
     public abstract Integer m1();
 
-    //Hierarchy 1 : A<S> <<< A<? extends S> <<< A<? extends T>
+    //Hierarchy 1 : A<S> <<< A<? extends S> <<< A<? extends T> wildcard
     //Example: Since Integer is a subtype of Number, List<Integer> is a subtype of List<? extends Integer> and List<? extends Integer> is a subtype of A<? extends Number>.
     //Thus, if an overridden method returns List<? extends Integer>, the overriding method can return List<Integer> but not List<Number> or List<? extends Number>.
 
 
-    //Hierarchy 2 : A<T> <<< A<? super T> <<< A<? super S>
+    //Hierarchy 2 : A<T> <<< A<? super T> <<< A<? super S> wildcard
     //Example: List<Number> is a subtype of List<? super Number> and List<? super Number> is a subtype of A<? super Integer>
     //Thus, if an overridden method returns List<? super Number>, the overriding method can return List<Number> but not List<Integer> or List<? super Integer>.
 
     // the overriding method allows to return the subtype of method return type, in this case which is subtype of list
-    // can be ArrayList<xxx> but not list <subtype> , the list <subtype> is specify by the wildcard bounds
+    // can be ArrayList<xxx> but not list <subtype> , the list <subtype> is specifies by the wildcard bounds
+    // only super class<? extends supertype> allow subclass overriding method return <? extends subtype>
     List<? extends Clothing> returnOfList();
 
-    // Integer is a child of Number Class, but in  ? super wildcards, the more specific class will actually the super class
-    // How? List<? super Integer> can contains start from Integer to Number ... , but  List<? super Number> can contains
+    // Integer is a child of Number Class, but in ? super wildcards, the more specific class will actually the super class
+    // How? List<? super Integer> can contain start from Integer to Number ... , but  List<? super Number> can contains
     // only start form only Number, the more restrictive type is the subtype
     List<? super Integer> returnOfNumber();
 

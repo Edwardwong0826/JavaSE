@@ -57,7 +57,7 @@ public class LoopAndSwitch {
         System.out.println(a);
 
 
-        // switch case will executed the statement that matches the condition, if that statement without break, it will fall
+        // switch case will execute the statement that matches the condition, if that statement without break, it will fall
         // through and executed until reaches the break
         switch (shr) { //switch statement will apply numeric promotion rule 2 as well
 

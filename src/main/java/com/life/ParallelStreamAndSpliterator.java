@@ -84,7 +84,7 @@ public class ParallelStreamAndSpliterator {
     public static void main(String[]args)
     {
 
-        //Splittable iterator is default cover by the stream framework, and the standard one in JDK already very good
+        // Splittable iterator is default cover by the stream framework, and the standard one in JDK already very good
         // unless want to custom our own one, normally doesn't necessary to created custom spliterator
         // like  want to specify the split time of the collection
 

@@ -6,7 +6,7 @@ public interface ReturnableTwo {
     // if there is other interface extends form this functional Interface, and do not declare any
     // other abstract method, that extended interface will be count as functional interface as well
 
-    // same signature method with different return type in concrete class need to have to have covariant return type
+    // same signature method with different return type in concrete class need to have covariant return type
     Number m1();
 
     public default int getNum(){ // only public access modifier

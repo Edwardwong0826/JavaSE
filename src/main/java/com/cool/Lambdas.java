@@ -29,19 +29,19 @@ public class Lambdas {
         mylist2.add(10);
 
 
-        // The predicate can either declared explicitly  or directly in method that requires predicate parameter use lambda
+        // The predicate can either declare explicitly  or directly in method that requires predicate parameter use lambda
         // And return boolean as a result
         Predicate<Integer> pred = p -> p == 0;
 
         mylist2.removeIf(pred);
         mylist2.removeIf(p -> p == 10);
 
-        // Return keyword will required the method body, multiply line will need to use return keyword
+        // Return keyword will require the method body, multiply line will need to use return keyword
         brandList.removeIf((Brand b) -> {
             return b.getName().equalsIgnoreCase("Rolex");
         });
 
-        // If try to remove the list that is back by array will cause error, but may changed the elements using list.set
+        // If try to remove the list that is back by array will cause error, but may change the elements using list.set
         brandList1.removeIf(b -> b.getName().equalsIgnoreCase("LV"));
 
         System.out.println("\n");

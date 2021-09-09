@@ -57,8 +57,8 @@ public class Generics<T, U>{
 
     public String toString() { return t.toString() + ":" + u.toString(); }
 
-    // the list without generics <> is assume to be able to take in Object type
-    // if want specific what type the list can take on, should use <> to specific to enforce compiler check for us
+    // the list without generics <> is assumed to be able to take in Object type
+    // if we want specific what type the list can take on, should use <> to specific to enforce compiler check for us
     public static List getList(){
         return null;
     }
@@ -94,10 +94,10 @@ public class Generics<T, U>{
         String[] str = {"haha"};
 
         // this arrays.as list will make the list backed by the array, either changes will reflect in both
-        // but no removed or add, set as the array is fixed size even the list is dynamic size
+        // but no remove or add, set as the array is fixed size even the list is dynamic size
         List<String> nums = Arrays.asList(str);
 
-        // this will create the list that will not affected by array changes
+        // this will create the list that will not be affected by array changes
         List<String> nums1 = new ArrayList<String>(Arrays.asList(str));
 
         // this list.of return the list that are unmodifiable, can't use set() at all
@@ -109,7 +109,7 @@ public class Generics<T, U>{
 
         //copy.add("haha"); - cause unsupportedoperation exception
 
-        List nonGeneric = new ArrayList<Integer>(); // since list does not specific any generic type, it will be list of object
+        List nonGeneric = new ArrayList<>(); // since list does not specific any generic type, it will be list of object
 
         nums.set(0,"lol");
         System.out.println();
@@ -153,7 +153,7 @@ public class Generics<T, U>{
 
         for(String k: map.keySet()){
             System.out.println(k);
-            // if when remove element during iterate, it will throws ConcurrentModificationException
+            // if when remove element during iterate, it will throw ConcurrentModificationException
             // because not Concurrent collection
             map.remove("first");
         }
@@ -270,7 +270,7 @@ public class Generics<T, U>{
         Predicate<String> predStr = s -> s.isBlank();
 
         // This is the method reference,Instance Method on a Parameter
-        // method reference does not passed the parameters
+        // method reference does not pass the parameters
         Predicate<String> predIns = String::isBlank; //ObjectType::instanceMethod
 
         // this is static method reference,
@@ -284,6 +284,22 @@ public class Generics<T, U>{
 
     }
 
+    public static void generic()
+    {
+        // Generic Classes <T,U>, the class no need to know what is passed in, T is just like Object class
+        String str= "iPHONE";
+        Integer price = 4899;
+        Generics<?,?> GC = new Generics<>(str,price);
+        System.out.println();
+        System.out.println(GC.getT());
+        System.out.println(GC.getU());
+
+        System.out.println( new Generics<String,Boolean>("Str",true).toString());
+
+        Generics.<NullPointerException>printException(new NullPointerException("C"));
+    }
+
+
 
     public static void main(String[] args){
 
@@ -294,11 +310,11 @@ public class Generics<T, U>{
         Clothing clo2 = new Shirt(9,160,"Shirt","Formal");
         Brand b1 = new Brand("LV");
 
-        // use collections interface as reference type to allow in future to changed to other concrete implementation class
+        // use collections interface as reference type to allow in future to change to other concrete implementation class
         // use extends wildcard get the object, use super wildcard to add the object
         // Generic collections type cannot add subtype instance, must be exact type that <> specify on
 
-        var varlist1 = new ArrayList<Integer>(); // this will be Integer var Arraylist
+        var varlist1 = new ArrayList<Number>(); // this will be Integer var Arraylist
         var varlist2 = new ArrayList<>(); // this will be raw type object var Arraylist
 
         List<? extends Clothing> clothsExtendList;
@@ -313,7 +329,7 @@ public class Generics<T, U>{
         clothsExtendList = new ArrayList<Shirt>();
         // Clothing returnObj = clothsExtendList.get(0);
 
-        //<? super xxx> lower-bounded wildcard guarantee too add instance of xxx or subclass of instance xxx only
+        //<? super xxx> lower-bounded wildcard guarantee to add instance of xxx or subclass of instance xxx only
         clothsSuperList = new ArrayList<>();
         clothsSuperList.add(b1);
         clothsSuperList.add(clo1);
@@ -329,15 +345,7 @@ public class Generics<T, U>{
         queue();
         Map();
 
-        // Generic Classes <T,U>, the class not need to know what is passed in, T is just like Object class
-        String str= "iPHONE";
-        Integer price = 4899;
-        Generics<String, Integer> GC = new Generics<>(str,price);
-        System.out.println();
-        System.out.println(GC.getT());
-        System.out.println(GC.getU());
 
-        System.out.println( new Generics<String,Boolean>("Str",true).toString());
         var number = new HashSet<Number>();
         number.add(null);
         number.add(309L);
@@ -347,7 +355,6 @@ public class Generics<T, U>{
             System.out.println(iter.next());
         }
 
-        Generics.<NullPointerException>printException(new NullPointerException("C"));
         List<Integer> one = List.of(8,9,10);
         var copy = List.copyOf(one);
         var copyOfCopy = List.copyOf(copy);
@@ -365,7 +372,7 @@ public class Generics<T, U>{
         var greetings = new LinkedList<String>();
 
         collectionIterator();
-
+        generic();
     }
 
     // 1.BE 2.D 3.E 4.B 5.BCF 6.C 7.AC 8.C 9.E 10.D 11.A 12.ABD 13.ABE 14.E 15.C 16.BDF 17.BCD 18.ABCF 19.A 20.A 21.AF 22.B 23.BE

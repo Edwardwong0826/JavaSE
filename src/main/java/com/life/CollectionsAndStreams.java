@@ -29,7 +29,7 @@ public class CollectionsAndStreams {
         j.add(new Jeans(90.00));
 
 
-        // We should iterating over collections and data sources using stream rather than normal for loop prior after Java 8
+        // We should iterate over collections and data sources using stream rather than normal for loop prior after Java 8
         Predicate<Jeans> testLength = jean -> jean.getLength() > 50;
         System.out.println();
         for(Jeans jean : j){
@@ -38,7 +38,7 @@ public class CollectionsAndStreams {
             }
         }
 
-        // stream is a ordered pipeline of these aggregate operations that process sequence of elements
+        // stream is an ordered pipeline of these aggregate operations that process sequence of elements
         // types of stream operations, terminal operations take all the intermediate operations and produce a result
         // stream will stop when requirements are matches using short-circuit operations,
         // Intermediate deals with Infinite Streams by return Infinite Streams
@@ -136,7 +136,7 @@ public class CollectionsAndStreams {
         //
         //
         //        Stream<String> s1 = Stream.of("monkey", "gorilla", "bonobo");
-        //        Stream<String> infinite = Stream.generate(() -> "chimp"); // this generate infinite elements by given supplier function
+        //        Stream<String> infinite = Stream.generate(() -> "chimp"); // this generates infinite elements by given supplier function
         //        s1.findAny().ifPresent(a -> System.out.println(a)); // monkey
         //        infinite.findAny().ifPresent(System.out::println); // chimp
         //
@@ -149,7 +149,7 @@ public class CollectionsAndStreams {
         System.out.println(list.stream().noneMatch(pred));
         System.out.println(infiniteString.anyMatch(pred));
 
-        // Streams can only use forEach to prints the elements, normal loop cannot don't implements Iterable interface
+        // Streams can only use forEach to prints the elements, normal loop cannot implement Iterable interface
         Stream<String> s2 = Stream.of("Alpha", "Delta", "Hotel");
         System.out.println();
         s2.forEach(System.out::println);
@@ -178,7 +178,7 @@ public class CollectionsAndStreams {
         System.out.println(word);
 
         // Use Collectors.toCollection() return result with encounter order
-        // Collectors.toSet() does not guarantees which implementation of set will get, but mostly HashSet
+        // Collectors.toSet() does not guarantee which implementation of set will get, but mostly HashSet
 
         Stream<String> stream2 = Stream.of("w","o","l","f");
         TreeSet<String> treeSet = stream2.collect(Collectors.toCollection(()-> new TreeSet<>()));
@@ -220,7 +220,7 @@ public class CollectionsAndStreams {
         StreamTerminalOps();
         StreamAndCollect();
 
-        // this line will hang and hit java heap space exception because it running forever
+        // this line will hang and hit java heap space exception because it's running forever
         // why? the sorted() waited all elements arrived only start sort, which is going forever
         // because stream is generate infinite elements, unless we kill it or limit before sorted()
         //Stream.generate(()-> "Elsa").filter(n->n.length() == 4).sorted().limit(2).forEach( System.out::println);

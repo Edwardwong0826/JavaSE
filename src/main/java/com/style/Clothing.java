@@ -17,8 +17,8 @@ public class Clothing extends Brand implements Returnable, ReturnableTwo{
 
     public  Clothing(){}
 
-    // In Constructor if got throws Exception, the inherit class constructor only valid for throws superclass of this exception
-    // or same exeception, and can declared other exception as well
+    // In Constructor if got throws Exception, to inherit class constructor only valid for throws superclass of this exception
+    // or same exception, and can declare other exception as well
     public Clothing(int size, double price, String type) // throws FileNotFoundException
     {
         super("LV");
@@ -61,7 +61,7 @@ public class Clothing extends Brand implements Returnable, ReturnableTwo{
         this.type = type;
     }
 
-    // method with no access modifier , only accesible within package
+    // method with no access modifier , only accessible within package
     // static method need to have method body
     // The overriding method cannot throw any checked exception other than what the overridden method throws
     int returnQuantity()  throws RuntimeException {
@@ -90,27 +90,33 @@ public class Clothing extends Brand implements Returnable, ReturnableTwo{
 
     }
 
-    // The doclean() exists in Returnable and Cleanble interface, but will only implements the returnable one as there
-    // two method same name and same arguements will be treats as one method
+    // The doclean() exists in Returnable and Cleanable interface, but will only implements the returnable one as there
+    // two method same name and same arguments will be treats as one method
     @Override
     public void doClean() {
 
     }
 
     // when a class implements two interface have same signature conflict default method,
-    // the compiiler will treats as abstract method
+    // the compiler will treat as abstract method
     @Override
     public int getNum() {
         return 0;
     }
 
+    // We also can override by ArrayList<? extends Trousers> like example below
     @Override
     public ArrayList<? extends Clothing> returnOfList(){
         return new ArrayList<Clothing>();
     }
 
+//    @Override
+//    public ArrayList<? extends Trousers> returnOfList(){
+//        return new ArrayList<Trousers>();
+//    }
+
     // List<? super Number> will be subtype of List<? super Integer>, the more restrictive class will be subtype
-    // Opposite with extends wilcards
+    // Opposite with extends wildcards
     @Override
     public  List<? super Number> returnOfNumber() {
         return null;
@@ -124,14 +130,14 @@ public class Clothing extends Brand implements Returnable, ReturnableTwo{
     public <T> Collection<T> transform(Collection<T> list) { return new HashSet<T>(); };
 
 
-    // Notice the override annotation does not force to be write it when overrides, the annotation is make
-    // sure the compiler go to check the overriden method
+    // Notice the override annotation does not force to be written it when overrides, the annotation is make
+    // sure the compiler go to check the overridden method
     public Trousers returnCloths(){
         return new Trousers();
     };
 
-    // This is from the Cleanble interface, although is the same name m1() as in Returnable interface,
-    // but notice there are two different method because the method arugments is different, so the class must implements this both
+    // This is from the Cleanable interface, although is the same name m1() as in Returnable interface,
+    // but notice there are two different method because the method arguments is different, so the class must implements this both
     @Override
     public void m1(int i) {
 
@@ -143,8 +149,8 @@ public class Clothing extends Brand implements Returnable, ReturnableTwo{
 
     @Override
     public int getQuote(){
-        // use interfaceName.super.xxx() can called the interface method
-        // if the class implement mulitply interface have same default method signature
+        // use interfaceName.super.xxx() can call the interface method
+        // if the class implement multiply interface have same default method signature
         // interfaceName.super.xxx() also can call default method on which interface we want
         return Returnable.super.getQuote();
     }

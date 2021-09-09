@@ -49,7 +49,7 @@ public class Shirt extends Clothing {
 
     // the default hashCode from Object class will generate unique hashcode even if two object is equals() or override equals already
     // we need to either override two hashCode() and equals() or don't override two at all, because if two objects when equals,
-    // the hash codes also should be same
+    // the hash codes also should be same, below using 17 and 31 hash code way
     @Override
     public int hashCode() {
         int result=17;

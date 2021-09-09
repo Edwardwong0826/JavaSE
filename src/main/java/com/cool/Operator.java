@@ -45,6 +45,7 @@ public class Operator {
         // notice var z3 = (short)s1 + s1 will return int , why? () cast operator has more precedence then +
         // var z3 = (short)(s1 + s2); only short
 
+        System.out.println(z3 + "-" + ((Object)z3).getClass().getName());
         if(50 == 50.0) // the 50 is promoted to double as rule 2
         {
             System.out.println(true);

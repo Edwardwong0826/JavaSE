@@ -24,7 +24,7 @@ public class Subclass extends Superclass {
     private static final List<Integer> values = asList(1,2,3);
 
     // the order of the static initializer and instance initializer
-    // 1. static variable and initializer first and only one time per class loaded,
+    // 1. static variable and initializer for super class and subclass first and only one time per class loaded,
     // 2. super class instance variable , instance initializer and constructor every instance
     // 3. child class instance variable , instance initializer and constructor every instance
     public Subclass()
@@ -54,7 +54,7 @@ public class Subclass extends Superclass {
     // public void m1(List<Integer> input) {
     //}
 
-    // this is redeclare private method instead of override
+    // this is redeclare private method instead of override, because private method cannot be overridden
     private void p1()
     {
 
@@ -117,7 +117,7 @@ public class Subclass extends Superclass {
 
     }
 
-    // @SafeVarargs only can be used in method contains varargs parameter, and not able to to be overridden
+    // @SafeVarargs only can be used in method contains varargs parameter, and not able to be overridden
     // any method of static, private, final
     @SafeVarargs // Annotation with no value
     public static void safeMethod(List... inInt){
@@ -144,7 +144,7 @@ public class Subclass extends Superclass {
         //super2.printInt(50.0); // this hit error, because in parent class does not have overloaded double parameter
 
         // hiding variable
-        System.out.println(super1.price); // instance variable is depending reference type is it,
+        System.out.println(super1.price); // instance variable is depends on reference type is it,
         System.out.println(sub1.price); // and print that reference class variable
         super2.s1();
         s1();
@@ -154,7 +154,7 @@ public class Subclass extends Superclass {
         super2.ints = 200;
         Superclass.ints = 300;
         System.out.println("Superclass static ints: " + Superclass.ints);
-        new Subclass().printInfo(); // all the overriding method has been replace at run time
+        new Subclass().printInfo(); // all the overriding method has been replaced at run time
 
 
     }

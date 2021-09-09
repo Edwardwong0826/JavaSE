@@ -57,7 +57,7 @@ public class BuiltInFunctional {
         //Predicate take argument and return boolean value
         Predicate<Integer> pred = (Integer p) -> p > 100;
 
-
+        Shirt shr = new Shirt(10, 60.00,"T-shirt");
         // lambda can access an instance methods, method parameter or local variable if they not set after initialized,
         // need to be effectively final. But if really want lambda to access, better add the final to the variable
         // instance or static or lambda variable are always allowed
@@ -107,6 +107,7 @@ public class BuiltInFunctional {
 
         // binary types interface use to take in two object to perform lambda functional interface
         BiPredicate<Jeans, Clothing> calBiPred = (t, s) ->t.getLength() < s.getPrice();
+
 
         if(calBiPred.test(j1,c1)){
             System.out.println(j1.getLength() + " Jeans length is less than clothing price " + c1.getPrice());
@@ -213,6 +214,8 @@ public class BuiltInFunctional {
         shirts.add(s1);
         System.out.println(shirts.contains(s2));
         System.out.println("shirt1 hashcode: " + s1.hashCode() + " ------ shirt2 hashcode: " +s2.hashCode());
+        System.out.println(s1.equals(s2)); // equals compare the values in the objects
+        System.out.println(s1 == s2); // == compare reference
     }
 
 
@@ -236,7 +239,7 @@ public class BuiltInFunctional {
         lambdasExpression(pred,ints1);
         binaryTypes();
         optionalType();
-        overrideEqualAndHashCodes();
+       overrideEqualAndHashCodes();
 
         // 1.D 2.F 3.E 4.AB 5.AC 6.B 7.F 8.DE 9.BD 10.FG 11.BD 12.FDH 13.G 14.BD 15.B 16.C 17.E 18.AD 19.A
         // 20.ACE 21.DE 22.CE

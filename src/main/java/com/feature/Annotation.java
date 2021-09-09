@@ -7,7 +7,7 @@ import java.lang.annotation.*;
 // public or package-private(default) access modifier, annotation can ce applies in many places
 enum UnitOfTemp {C,F}
 @Target({ElementType.TYPE,ElementType.METHOD})
-@Retention(RetentionPolicy.CLASS)//stored in.class file and but not available at runtime(default compiler behaviour)
+@Retention(RetentionPolicy.CLASS)//stored in.class file and not available at runtime(default compiler behaviour)
 @Inherited // subclass will inherit the annotation type and information found in the parent class
 public @interface Annotation {
 
@@ -19,13 +19,13 @@ public @interface Annotation {
     // 3. Annotation element are implicitly to be public , try to modified access will compile error
     // 4. final, static modifier are not allowed in value element
     // 5. Annotation element return type cannot be void
-    // 6. An data that are not likely to changed should be as metadata, attribute data as part of object will
-    //    changed frequently, not suitable as annotation metadata
+    // 6. A data that are not likely to changed should be as metadata, attribute data as part of object will
+    //    change frequently, not suitable as annotation metadata
 
     @ArrayAnnotation(genres={"EMD"})
     public abstract int startHour() default 6; //-- this called Optional element
 
-    // this is element in Annotation, although looks like a lot of abstract method
+    // this is element in Annotation, although it looks like a lot of abstract method
     // for an element to be optional, need to included default value, the default value must be a non-null
     // constant expression, cannot be like new String("") or null
     int hoursPerDay() default 2;

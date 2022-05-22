@@ -69,7 +69,7 @@ public class ConcurrencyExecutorService {
     {
 
         // cachedThread create thread as request come in, reuse the thread it created, don't dead immediately finishing their task
-        // if the thread doesn't not anything in 60 seconds, then it will de-allocated and thrown away
+        // if the thread doesn't do anything in 60 seconds, then it will de-allocated and thrown away
         // fixedThread pool contains fixed number of threads, also reuse and queue up work until a thread is available
         ExecutorService es = Executors.newCachedThreadPool();
         ScheduledExecutorService ses = Executors.newScheduledThreadPool(4);
@@ -100,7 +100,7 @@ public class ConcurrencyExecutorService {
         s.execute(()-> {for(int i=0;i<3; i++) System.out.println("Value " + i); });
         System.out.println("End");
 
-        // shutdown() does not means stop any tasks and terminate, it rejects new coming task
+        // shutdown() does not mean stop any tasks and terminate, it rejects new coming task
         // finished all submitted task only go to terminate, isShutdown() and isTerminated() will be check
         //s.shutdownNow() - this stop all running task and discards submitted task not start yet
         s.shutdown();

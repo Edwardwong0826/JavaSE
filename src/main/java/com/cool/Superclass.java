@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-// we need to declared the element value as inside this annotation got specifying element
+// we need to declare the element value as inside this annotation got specifying element
 // () are not required only when only if no values are included, use comma to separate element value
 @Annotation (hoursPerDay = 3, startHour = 1) // this annotation with required value and optional value
 public class Superclass {
@@ -14,7 +14,7 @@ public class Superclass {
     static boolean s = false;
     static int ints;
     int price = 1 ;
-    // final variable must initialized a value before use, either in static/initialize or constructor
+    // final variable must initialize a value before use, either in static/initialize or constructor
     final static int finalVar;
 
     // final references can call methods, just cannot assign to other object
@@ -45,8 +45,8 @@ public class Superclass {
 
     }
 
-    // static method cannot be override, only can be hidden static method
-    // subclass extends the superclass can directly called the superclass method by just method name
+    // static method cannot be overridden, only can be hidden static method
+    // subclass extends the superclass can directly call the superclass method by just method name
     public static void s1()
     {
         System.out.println("Superclass s1 static method");

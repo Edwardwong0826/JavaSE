@@ -42,7 +42,7 @@ public class NestedClass {
 
         // the local inner class rules
         // 1.no access modifier
-        // 2.cannot declared static and static fields or methods but static final fields
+        // 2.cannot declare static and static fields or methods but static final fields
         // 3.only have access to local variable for those final or effectively final
         // 4.local inner class exist when the method being called, out of scope after method return
         class LocalInner{

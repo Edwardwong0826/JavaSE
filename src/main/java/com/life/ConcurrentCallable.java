@@ -6,8 +6,8 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class ConcurrentCallable implements Callable<String> {
-    // Callable takes an generic argument
-    // ReentrantLock allow to use lock and unlock , trylock like synchronized
+    // Callable takes a generic argument
+    // ReentrantLock allow using lock and unlock , trylock like synchronized
 
     private String name;
     public int count=10;
@@ -65,7 +65,7 @@ public class ConcurrentCallable implements Callable<String> {
         Future<String> f1 = es.submit(task);
         Future<String> f2 = es.submit(()->"Thread return value : Beta");
 
-        // there is another CCompletableFuture<Integer> f = CompletableFuture.supplyAsync(new MySupplier(), exec);
+        // there is another CompletableFuture<Integer> f = CompletableFuture.supplyAsync(new MySupplier(), exec);
         // this is non blocking like asynchronous , f.thenApply(xxxx()); like call back
 
 

@@ -57,7 +57,7 @@ public class Main {
 
         // String substring method end index need to have one extra length
         System.out.println("Substring of 3 length start with w in hello world: " + s2.substring(6,11));
-
+       
 
         List<String> al = new ArrayList<String>(Arrays.asList(s1, s2));
         List<String> al1 = Arrays.asList(s1);
@@ -66,8 +66,8 @@ public class Main {
 
         // The Java objects is all passed by value, even thought it looks like pass by reference,
         // when passing to method, the method local object actually points to the original object memory,
-        // when modify it can updates, but when it set to null the local object is changed to point to null only
-        // hence the original object does not affected
+        // when modify it can update, but when it set to null the local object is changed to point to null only
+        // hence the original object does not affect
         String s = " aaa ";
         StringBuilder sb = new StringBuilder("bbb");
         testRefs(s, sb);
@@ -77,7 +77,7 @@ public class Main {
         System.out.println(getMain().url);
         arrayCompare();
 
-        // + operator  overloads with string or literals, not other type, below will not compiled
+        // + operator  overloads with string or literals, not other type, below will not compile
         //System.out.println(null+true);
 
         int num = 5;
@@ -99,7 +99,7 @@ public class Main {
         str = str + sb.toString();
         str.strip(); // all string method will return new string
         sb.append(str);
-        // set this StringBuilder to null does not affected to the original StringBuilder object, but it can update the original object
+        // set this StringBuilder to null does not affect to the original StringBuilder object, but it can update the original object
         // set to null only means pointer points to null only
         sb = null;
         str = null;

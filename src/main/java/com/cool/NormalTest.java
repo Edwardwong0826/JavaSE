@@ -45,7 +45,7 @@ public class NormalTest extends AbstractTest {
 
 
     // 1. The first concrete class extends abstract class must provide am implementation for the inherited abstract methods
-    // 2. If the parent abstract class inherit a abstract class methods, and provides method implementation then the concrete class no required to override the method
+    // 2. If the parent abstract class inherit an abstract class methods, and provides method implementation then the concrete class not required to override the method
     // 3. else the abstract class inherits abstract method will need to be implemented in concrete class
     @Override
     public void a1(int inInt)  {

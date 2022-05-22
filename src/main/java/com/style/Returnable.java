@@ -7,7 +7,7 @@ import java.util.List;
 // interface can extend more than one interface because there is no implementation
  public interface Returnable extends Cleanable, CleanableTwo{
 
-    // A interface is a contract and way of defining shared behaviour, it is a way of abstracting out the shared capability
+    // An interface is a contract and way of defining shared behaviour, it is a way of abstracting out the shared capability
     // across multiple different class that does not have common super class but common method
 
     // the variable will be implicitly to be public static final only, not allowed to be private and protected
@@ -20,7 +20,7 @@ import java.util.List;
     @Override
     void doClean();
 
-    // Start from Java 9, the interface was allow to have private methods or private static methods,
+    // Start from Java 9, the interface was allowed to have private methods or private static methods,
     // but not protected or protected static methods
 
 
@@ -38,7 +38,7 @@ import java.util.List;
     }
 
 
-    // Starting from Java 8, Interface allow to add concrete static method
+    // Starting from Java 8, Interface allow adding concrete static method
     // the extended class that wish to called interface method need to add interface name
     // like format interfaceName.methodName()
     public static double computeAlcoholPercent()
@@ -48,7 +48,7 @@ import java.util.List;
     }
 
     // default methods must have a body, purpose is to add new method to interface without needs the class
-    // to implements and break other class, noted default method is a instance method
+    // to implements and break other class, noted default method is an instance method
     // rules of default method
     // 1. only interface allow adding default keyword as default method
     // 2. if class inherits two or more default method with same method signature, the class must override it

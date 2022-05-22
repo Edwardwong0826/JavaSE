@@ -40,10 +40,6 @@ public class ConcurrentThreadAndRunnable extends Thread implements Runnable {
         // passed in the Runnable object to Thread constructor to start execute task where define in run()
         new Thread(new ConcurrentThreadAndRunnable()).start();
 
-
-
-
-
     }
 
 }

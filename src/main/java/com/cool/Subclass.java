@@ -18,7 +18,7 @@ public class Subclass extends Superclass {
 
     private int key;
     static boolean s = true;
-    int price = 0; // this is hiding variables , no matter is it static or not, java not allow variable override, when call it will based on refer type
+    int price = 0; // this is hiding variables , no matter is it static or not, java not allow variable override, when call it will be based on refer type
     // hiding variables will be called based on reference types
     Object o;
     private static final List<Integer> values = asList(1,2,3);
@@ -36,11 +36,11 @@ public class Subclass extends Superclass {
 
     static { System.out.print("8"); }
 
-    // JVM will generate no args argument constructor if no any constructor is defined. Got private constructor will counted as
+    // JVM will generate no args argument constructor if no any constructor is defined. Got private constructor will count as
     // explicitly as well, and will not generated no args constructor
     public Subclass(int key){
 
-        // if we don't called any constructor of super class, Super() or This() will be implicit insert to constructor,
+        // if we don't call any constructor of super class, Super() or This() will be implicit insert to constructor,
         // so need to make sure the super class contain no args constructor
         this.key = key;
         super.price = 100;
@@ -48,7 +48,7 @@ public class Subclass extends Superclass {
     }
 
 
-    // this will not be consider overload, at run time, the JVM will remove generic type at runtime thus both method
+    // this will not be considered overload, at run time, the JVM will remove generic type at runtime thus both method
     // are the same and not consider overriding
     // @Override
     // public void m1(List<Integer> input) {
@@ -89,8 +89,8 @@ public class Subclass extends Superclass {
 
 
     // 1. sub class method that is overrides super class method called overriding method
-    // 2. sub class overriding method cannot declared any new checked exception
-    // 3. sub class overriding method can declared any runtime exception but not boarder check exception than super class
+    // 2. sub class overriding method cannot declare any new checked exception
+    // 3. sub class overriding method can declare any runtime exception but not boarder check exception than super class
     @Override
     void print(int input) throws ArrayIndexOutOfBoundsException
     {
@@ -98,7 +98,7 @@ public class Subclass extends Superclass {
 
     }
 
-    @ArrayAnnotation(genres="EMD") // Annotation array value element may written without {} with single value
+    @ArrayAnnotation(genres="EMD") // Annotation array value element may be written without {} with single value
     @ArrayAnnotation(genres={"Classic"}) // multiple annotation
     @ArrayAnnotation(genres={"Vocal","Pop"})
     @SuppressWarnings("unchecked") //ignore warnings related to the use of raw types such as List instead List<String>

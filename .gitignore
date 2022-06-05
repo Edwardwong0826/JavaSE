@@ -6,3 +6,4 @@
 *.class
 *.class
 target/classes/com/style/Main.class
+*.class

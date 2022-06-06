@@ -1,11 +1,25 @@
 package com.cool.reflection;
 
+import java.util.Date;
+
 public class Reflection3 {
+
 
     public static void main(String[] args) {
         A a = new A();
         System.out.println(A.m);
+        System.out.println(a.testLocalVariable());
     }
+
+    public void test(){
+        double price = 130.5; // double and long use two slot in local variable table, other type and reference type use 1 slot
+        Date date = new Date();
+        System.out.println(date);
+        System.out.println(price);
+
+    }
+
+
 
 }
 
@@ -23,8 +37,15 @@ class A{
 
     static int m = 300;
 
+    private int num = 1;
+
     public A() {
         System.out.println("class a no args constructor init");
+    }
+
+    public int testLocalVariable(){
+        this.num = 100;
+        return num;
     }
 
 }

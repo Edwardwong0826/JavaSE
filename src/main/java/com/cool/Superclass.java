@@ -36,6 +36,12 @@ public class Superclass {
 
     public Superclass(long shadow)
     {
+        // there is early binding and lately binding,
+        // early binding is in complied stage we can know the type and when runtime not changed
+        // lately binding is we don't know the type in complied stage until runtime
+        // object with polymorphism and got subclass override its method normally is lately binding
+        // by using final keyword means prohibited extends or override, thus will be early binding
+        // below is early binding
         super();
 
     }

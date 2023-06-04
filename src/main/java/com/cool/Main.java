@@ -26,8 +26,7 @@ public class Main {
         String s1 = new StringBuilder("world").insert(0, "hello", 0,4).toString();
 
         String s2 = new StringBuilder("hello").append(" world123 ", 0, 6).toString();
-
-
+        
         // this one used method chaining, and actually return two string already
         String s3 = "  hello World  ".trim().replace('h', 'H');
 
@@ -90,6 +89,13 @@ public class Main {
         System.out.println();
         stringOperatorPlus();
         stringPool();
+
+        String str = "testString";
+
+        //[t, e, s, t, S, t, r, i, n, g]
+        Character[] charObjectArray =
+                str.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
+        System.out.println(charObjectArray[0]);
 
 
     }
@@ -175,6 +181,8 @@ public class Main {
         String y = "Hello World";//  use the string pool same string object
         String z = new String("Hello World"); // new String() is create object without store in string pool
         String first = "rat" + 1; // concentration with be in string pool
+
+
         String second = "r" + "a" + "t" + "1";
         String third = "r" + "a" + "t" + new String("1"); // once there is with new string(), then this no longer to be compile-time constant
 

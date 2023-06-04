@@ -28,7 +28,7 @@ public class Reflection2 {
             System.out.println(declaredField);
         }
 
-        System.out.println();
+        System.out.println("---------------------------");
 
         //get class methods
         Method[] methods = c1.getMethods();
@@ -36,14 +36,14 @@ public class Reflection2 {
             System.out.println(method);
         }
 
-        System.out.println();
+        System.out.println("----------------------------");
 
         methods = c1.getDeclaredMethods();
         for (Method method : methods) {
             System.out.println(method);
         }
 
-        System.out.println();
+        System.out.println("-----------------------------");
 
         // get specified method
         Method getName = c1.getMethod("getName", null);
@@ -52,7 +52,7 @@ public class Reflection2 {
         System.out.println(setName);
 
         // get specified constructor
-        System.out.println();
+        System.out.println("-------------------------------");
         Constructor[] constructors = c1.getConstructors();
         for (Constructor constructor : constructors) {
             System.out.println(constructor);

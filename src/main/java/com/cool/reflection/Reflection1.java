@@ -1,5 +1,7 @@
 package com.cool.reflection;
 
+import com.feature.ArrayAnnotation;
+
 // feature of reflection
 // in runtime determine any object its class
 // in runtime construct any class object
@@ -82,6 +84,11 @@ class User {
         this.age = age;
     }
 
+    @ArrayAnnotation
+    public void testMethodAnnotation(){
+
+    }
+
     @Override
     public String toString() {
         return "Reflection{" +
@@ -92,6 +99,7 @@ class User {
     }
 }
 
+@ArrayAnnotation
 class Person{
     public String name;
 

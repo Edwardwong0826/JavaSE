@@ -14,7 +14,7 @@ import java.lang.annotation.*;
 // java type with a few exception to be used only method return value or methods return void still need
 // METHOD value define the annotation
 
-@Target({ElementType.METHOD})
+@Target({ElementType.METHOD,ElementType.TYPE})
 
 // Annotation may discarded by compile or at runtime, we can specify how they are handled by using @Retention
 @Retention(RetentionPolicy.RUNTIME)  // stored in .class file and available at runtime

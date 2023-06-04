@@ -1,3 +1,12 @@
 .class
-target/classes/com/style/Main.class
+*.class
 
+/target/
+*/target/**
+
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr

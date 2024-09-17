@@ -2,8 +2,18 @@ package com.cool.virtualthreads;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ForkJoinPool;
 
 public class MaxThreads {
+
+    // Virtual threads implemented in the JVM and need to be scheduled on platform thread
+    // The scheduling is done using a ForkJoinPool, a more sophisticated executor service, got a pool of platform threads
+    // The ForkJoinPool is used to schedule the continuation of the virtual threads on the platform threads
+    // And virtual threads does not need any thread pool
+    // By using virtual threads, the JVM automatically switches from a blocking to non-blocking io call
+    // We can think virtual thread is a Java object with no stack of its own associated with it and that's why creating was so fast
+    // But always a continuation object associated with that which is associated with a stack
+    // Continuation object will stored code pointer and method stack frames
 
     private static void handleUserRequest(){
 

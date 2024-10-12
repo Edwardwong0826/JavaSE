@@ -5,6 +5,30 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+
+// Actually in Java there is only one way to create thread, which is Thread.start()
+// Every way to create thread like Runnable, Callable, ExecutorService, ForkJoin, CompletableFuture, Timer, parallelStream class,
+// In the source code ultimately will call Thread.start() to create the thread
+// https://mp.weixin.qq.com/s/NspUsyhEmKnJ-4OprRFp9g - how actually Java create the thread
+
+// Runnable and Callable more precise to said is the way to create thread body (in this case Runnable and Callable refer to an interface that can run the task)
+// thread body only contains run() method , when the thread get launch, it's run() method logic will execute by the thread
+// Therefore, thread is the container used to executed thread body define task - run() method, when we create a thread, we need to designate one thread body for it,
+// allow when thread launch to execute corresponding task. Thread and thread body relationship is like Class and Object.
+// we can think of Thread body is multithreaded task
+
+// new Runnable(...);
+// new Callable(...);
+// Above is not really create the thread, is to creates two ‘multithreaded tasks’ that can be offered to threads for execution.
+
+// Another question is how task and thread come with a binding relationship ? we can search below method in Thread class to read the source code to see
+// This constructor in Thread class will initialize a thread (which is platform thread).
+// public Thread(Runnable xxx) {
+//    xxx
+// }
+
+// Summary, thread is the container to execute thread body, and thread body is a runnable task
+
 public class ConcurrentCallable implements Callable<String> {
     // Callable takes a generic argument
     // ReentrantLock allow using lock and unlock , trylock like synchronized
@@ -41,9 +65,7 @@ public class ConcurrentCallable implements Callable<String> {
         // synchronized enforce each thread enter this block of codes get a lock or monitor to execute,
         // other thread need to wait the thread that get the lock to finished and release lock only
         // can get the lock to inside, this can ensure the order be properly
-
-
-            System.out.println((++count) +" ");
+        System.out.println((++count) +" ");
 
     }
 
@@ -54,7 +76,6 @@ public class ConcurrentCallable implements Callable<String> {
     }
 
     public static void main(String[] args){
-
 
         ExecutorService es = Executors.newFixedThreadPool(4);
         ConcurrentCallable task = new ConcurrentCallable("thread return value : Alpha");

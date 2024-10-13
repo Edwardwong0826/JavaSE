@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class ConcurrentThreadSafe{
+public class ConcurrentThreadSafeAndSynchronized {
 
     private static int count = 0;
     private static AtomicInteger atomicInt = new AtomicInteger(0);
@@ -58,7 +58,7 @@ public class ConcurrentThreadSafe{
         ExecutorService fs2 = Executors.newFixedThreadPool(10);
 
         ConcurrentCallable callable = new ConcurrentCallable();
-        ConcurrentThreadSafe ces = new ConcurrentThreadSafe();
+        ConcurrentThreadSafeAndSynchronized ces = new ConcurrentThreadSafeAndSynchronized();
 
         System.out.println();
         for (int i = 0; i < 10; i++)
@@ -128,7 +128,7 @@ public class ConcurrentThreadSafe{
 
         System.out.println("CyclicBarriers-------------------------");
         ExecutorService es = Executors.newFixedThreadPool(4);
-        ConcurrentThreadSafe ces = new ConcurrentThreadSafe();
+        ConcurrentThreadSafeAndSynchronized ces = new ConcurrentThreadSafeAndSynchronized();
         CyclicBarrier c1 = new CyclicBarrier(4);
         CyclicBarrier c2 = new CyclicBarrier(4, () -> System.out.println("Finished!"));
 

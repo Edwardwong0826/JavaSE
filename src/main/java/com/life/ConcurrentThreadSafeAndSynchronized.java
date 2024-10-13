@@ -16,10 +16,37 @@ public class ConcurrentThreadSafeAndSynchronized {
     private AtomicBoolean atomicBoolean = new AtomicBoolean(true);
     private AtomicLong atomicLong = new AtomicLong(1L);
 
-    // synchronized can on the method or block {} and any object instance
+    // synchronized can on the method or block {} and any object instance, and also static method
     // synchronized blocks other thread access while one thread obtain the lock and using it, it was atomic operation
     // only when the thread is done and release the lock, other thread can get the lock
     // public synchronized increment() - either two way on method or on block is same
+
+    /**
+     * How to use synchronized
+     * 1. Use in instance method
+     *  synchronized void method() {
+     *      //业务代码
+     *  }
+     *
+     * 2. Use in static method
+     *
+     *  synchronized static void method() {
+     *      //业务代码
+     *  }
+     *
+     * 3. Use in code block {}
+     *  synchronized(object) - means before enter the synchronisation code base need to acquire this given object lock
+     *  synchronized(class) -  means before enter the synchronisation code base need to acquire this given class lock
+     *
+     *  synchronized(this) {
+     *     //业务代码
+     *  }
+     *
+     */
+
+    // The synchronized keyword, when added to static methods and synchronized(class) blocks, locks the class;
+    // The synchronized keyword added to an instance method locks the object instance;
+
     public void increment()
     {
         synchronized(this)
